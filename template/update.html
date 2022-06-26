@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <div class="row " style="margin: auto; width: 50%;">
+     <div class="col-sm-8">
+        <div class="container mt-3">
+            <h4>Update Book's Record</h4>
+     
+            <form action="/update/{{library.id}}" method="POST">
+                {% csrf_token %}
+             <div class="form-group">
+                 <label for="">Book Title:-</label>
+                 <input type="text" name="booktitle" value="{{library.booktitle}}" class="form-control">
+             </div>
+             <div class="form-group">
+                 <label for="">Book Author:-</label>
+                 <input type="text" name="bookauthr" value="{{library.bookauthr}}" class="form-control">
+             </div>
+             <div class="form-group">
+                <label for="">Book Genre:-</label>
+                <input type="text" name="bookgnr" value="{{library.bookgnr}}" class="form-control">
+            </div>
+            <!-- <div class="form-group">
+                <label for="">Date of launch:-</label>
+                <input type="date" name="bookdol" value="{{library.bookdol}}" class="form-control">
+            </div> -->
+            
+             <hr>
+             <div class="form-group">
+                 <button class="btn btn-primary" type="submit">Update Record</button>
+                 <a href="{% url 'show' %}" class="btn btn-info">Show Details</a>
+
+             </div>
+            </form>
+     
+        </div>
+     
+     </div>
+ </div>
+   
+{% endblock content %}

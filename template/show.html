@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+ <div class="row " style="margin: auto; width: 50%; padding-top: 100px;">
+     <div class="col">
+        <div class="container ">
+            <h4>Book's Details</h4>
+            <a href="/logout" class="btn btn-sm btn-danger">LogOut</a>
+            <a href="{% url 'add' %}" class="btn btn-sm btn-info">Add New Book</a>
+            <hr>
+            <table class="table table-bordered  border-primary  table-striped">
+                <thead>
+                    <tr>
+                        <th>Book ID:-</th>
+                        <th>Book Title:-</th>
+                        <th>Book Author:-</th>
+                        <th>Book Genre:-</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in library %}
+                    <tr>
+                        <td>{{ e.id }}</td>
+                        <td>{{ e.booktitle }}</td>
+                        <td>{{ e.bookauthr }}</td>
+                        <td>{{ e.bookgnr }}</td>
+                        <!-- <td>{{ e.bookdol }}</td> -->
+                        
+                        <td>
+                            <a href="update/{{e.id}}" class="btn btn-sm btn-info">Edit&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            
+                            <a href="delete/{{e.id}}" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+     
+
+     
+        </div>
+     
+     </div>
+ </div>
+ {% endif %}
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% block content %}      
+
+{% load crispy_forms_tags %}
+
+<body style="background-color:aquamarine ; " >
+<div style="padding-top:20px ; padding-left:550px ;">
+  <h1>Login</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ login_form|crispy }}
+    <div style="padding-top:10px ;" >
+       <button  type="submit">Login</button>
+    </div>
+  </form>
+  <p >Don't have an account? <a href="{% url 'register' %}">Create an account</a>.</p>
+</div>
+</body>
+{% endblock %}
